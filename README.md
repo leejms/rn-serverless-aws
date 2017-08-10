@@ -31,7 +31,7 @@ https://aws.amazon.com/free/
 ### Installing
 
 ```
-git clone ---
+git clone https://github.com/leejms/rn-serverless-aws.git
 yarn or npm install
 ```
 
@@ -87,6 +87,7 @@ run `react-native run-ios`
 
 * [React Native](https://facebook.github.io/react-native/)
 * [Serverless](https://serverless.com)
+* [AWS Lambda](http://docs.aws.amazon.com/lambda/latest/dg/use-cases.html) <= see common use cases
 
 ## Authors
 
