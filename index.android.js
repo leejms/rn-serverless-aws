@@ -4,30 +4,53 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
-} from 'react-native';
+  View,
+  Button
+} from 'react-native'
+
+// put your serverless url here
+// you will see it when you run ./deplyAPI.sh in the api dir
+let apiURL = 'https://cxgfos6qrk.execute-api.us-east-1.amazonaws.com/dev/hello-world'
 
 export default class RNServerless extends Component {
+  state = {response: ''}
+
+  componentDidMount() {
+    console.log('componentDidMount')
+    this.callServer()
+  }
+  
+  callServer = () => {
+    this.setState({response: 'calling serverless api...'})
+    fetch(apiURL)
+    .then((resp) => resp.json())
+    .then(data => {
+      console.log('RESPONSE', data)
+      this.setState({response: data.message})
+    })
+  }
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          {this.state.response}
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.android.js
+          You now have folder name
+            <Text style={{fontWeight: 'bold', fontSize: 20}}> api </Text>
+          in your React Native project for microservice code!
         </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
+        <Text style={[styles.instructions, {fontStyle: 'italic'}]}>
+          powered by AWS Lambda
         </Text>
+        <Button title='call the service again!' onPress={()=>this.callServer()}/>
       </View>
-    );
+    )
   }
 }
 
@@ -46,8 +69,10 @@ const styles = StyleSheet.create({
   instructions: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5,
+    margin: 45,
+    marginTop: 25,
+    marginBottom: 25
   },
-});
+})
 
-AppRegistry.registerComponent('RNServerless', () => RNServerless);
+AppRegistry.registerComponent('RNServerless', () => RNServerless)
