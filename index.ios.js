@@ -13,7 +13,9 @@ import {
   Button
 } from 'react-native'
 
-    let apiURL = 'https://cxgfos6qrk.execute-api.us-east-1.amazonaws.com/dev/hello-world'
+// put your serverless url here
+// you will see it when you run ./deplyAPI.sh in the api dir
+let apiURL = 'https://cxgfos6qrk.execute-api.us-east-1.amazonaws.com/dev/hello-world'
 
 export default class RNServerless extends Component {
   state = {response: ''}
