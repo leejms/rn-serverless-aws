@@ -2,6 +2,9 @@
 
 A React Native starter app with AWS Lambda serverless config baked in
 
+![](/assets/img/simshot1.png?raw=true)
+![](/assets/img/simshot2.png?raw=true)
+
 ### Prerequisites
 
 1. You will need serverless installed
